@@ -7,9 +7,14 @@ import {
   getBuildingById,
   getBuildings,
   deleteBuildingById,
+  updateBuildingById,
 } from '../controllers/buildingsController.js';
 
 router.route('/').get(getBuildings).post(createBuilding);
-router.route('/:id').get(getBuildingById).delete(deleteBuildingById);
+router
+  .route('/:id')
+  .get(getBuildingById)
+  .patch(updateBuildingById)
+  .delete(deleteBuildingById);
 
 export default router;

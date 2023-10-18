@@ -35,15 +35,13 @@ export const getBuildings = async (req, res) => {
   });
 };
 
-// @desc    Get building bt id
+// @desc    Get building by id
 // @route   GET /api/v1/building/:id
 export const getBuildingById = async (req, res) => {
   const building = await Building.findById(req.params.id);
 
-  console.log(building);
-
-  if(!building){
-    throw new ErrorResponse(`building with id ${req.params.id} not found`, 404)
+  if (!building) {
+    throw new ErrorResponse(`building with id ${req.params.id} not found`, 404);
   }
 
   res.json({
@@ -52,6 +50,35 @@ export const getBuildingById = async (req, res) => {
   });
 };
 
+// @desc    Update building by id
+// @route   PATCH /api/v1/building/:id
+export const updateBuildingById = async (req, res) => {
+  const { name, floors, location, description, owner } = req.body;
+  const building = await Building.findById(req.params.id);
+
+  if (building) {
+    building.name = name;
+    building.floors = floors;
+    building.location = location;
+    building.description = description;
+    building.owner = owner;
+    const updatedBuilding = await building.save();
+    res.json({
+      status: 'Update Successfull',
+      updatedBuilding,
+    });
+  } else {
+    throw new ErrorResponse(`building with id ${req.params.id} not found`, 404);
+  }
+};
+
+// @desc    Delete building by id
+// @route   DELETE /api/v1/building/:id
 export const deleteBuildingById = async (req, res) => {
-  // 
-}
+  await Building.deleteOne({ _id: req.params.id });
+
+  res.json({
+    status: 'Delete Successfull',
+    message: 'Building Removed',
+  });
+};
