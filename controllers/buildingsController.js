@@ -8,11 +8,15 @@ import ErrorResponse from '../utils/errorResponse.js';
 export const createBuilding = async (req, res) => {
   const { name, floors, location, description, owner } = req.body;
   if (!name || !floors || !location) {
-    throw new ErrorResponse('Please provide all values', 400);
+    throw new ErrorResponse(
+      'Please provide all values [name, floors, location]',
+      400,
+    );
   }
 
-  const building = Building.create(req.body);
-
+  const building = await Building.create(req.body);
+  // If any error occured during creation, will be handled by global error middleware
+  // this eliminate use of try-catch block in project
   res.status(201).json({
     status: 'Success',
     building,
