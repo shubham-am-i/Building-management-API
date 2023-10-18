@@ -2,9 +2,14 @@ import express from 'express';
 const router = express.Router();
 
 // import controllers
-import { createBuilding } from '../controllers/buildingsController.js';
+import {
+  createBuilding,
+  getBuildingById,
+  getBuildings,
+  deleteBuildingById,
+} from '../controllers/buildingsController.js';
 
-router.route('/').post(createBuilding);
-// router.route('/:id').patch(updateBuilding).delete(deleteBuilding);
+router.route('/').get(getBuildings).post(createBuilding);
+router.route('/:id').get(getBuildingById).delete(deleteBuildingById);
 
 export default router;

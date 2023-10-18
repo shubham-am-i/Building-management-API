@@ -22,3 +22,36 @@ export const createBuilding = async (req, res) => {
     building,
   });
 };
+
+// @desc    Get all buildings
+// @route   GET /api/v1/building/
+export const getBuildings = async (req, res) => {
+  const buildings = await Building.find({});
+
+  res.json({
+    status: 'Success',
+    length: buildings.length,
+    buildings,
+  });
+};
+
+// @desc    Get building bt id
+// @route   GET /api/v1/building/:id
+export const getBuildingById = async (req, res) => {
+  const building = await Building.findById(req.params.id);
+
+  console.log(building);
+
+  if(!building){
+    throw new ErrorResponse(`building with id ${req.params.id} not found`, 404)
+  }
+
+  res.json({
+    status: 'Success',
+    building,
+  });
+};
+
+export const deleteBuildingById = async (req, res) => {
+  // 
+}

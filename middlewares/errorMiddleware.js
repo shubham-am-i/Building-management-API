@@ -1,18 +1,17 @@
 import ErrorResponse from '../utils/errorResponse.js';
 
 const notFound = (req, res, next) => {
-  const error = new Error(`Not Found - ${req.originalUrl}`);
-  res.status(404);
+  const error = new ErrorResponse(`Not Found - ${req.originalUrl}`, 400);
   next(error);
 };
 
 const errorHandler = (err, req, res, next) => {
   let message;
   let error = { ...err };
-  //   error.message = err.message;
+  error.message = err.message;
 
   // Log to console for dev
-  console.log(err);
+  //   console.log(error);
 
   // Mongoose bad ObjectId
   if (err.name === 'CastError') {

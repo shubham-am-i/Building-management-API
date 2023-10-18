@@ -6,10 +6,12 @@ const buildingSchema = mongoose.Schema(
   {
     building_id: {
       type: String,
-      default: uuidv4(),
+      default: uuidv4,
     },
     name: {
       type: String,
+      unique: true,
+      trim: true,
       required: [true, 'Please provide building name'],
     },
     floors: {
