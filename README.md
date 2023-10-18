@@ -52,12 +52,12 @@ npm test
 ## Setting Up for Production
 For a production environment, consider following enhancements:
 
--Security Headers: Implement a package like helmet to add security headers that protect against common web vulnerabilities.
--XSS Prevention: Utilize packages like xss-clean to sanitize input and mongo-sanitize to protect against NoSQL injection attacks.
--Authentication and Authorization: Implement a robust authentication and authorization system to protect your routes.
--Rate Limiting: Employ rate limiting to prevent abuse of your API.
--Input Validation: Use express-validator for thorough input validation.
--Deployment Scripts: Create scripts for deploying your application on platforms like AWS, Heroku, or a custom server.
+- Security Headers: Implement a package like helmet to add security headers that protect against common web vulnerabilities.
+- XSS Prevention: Utilize packages like xss-clean to sanitize input and mongo-sanitize to protect against NoSQL injection attacks.
+- Authentication and Authorization: Implement a robust authentication and authorization system to protect your routes.
+- Rate Limiting: Employ rate limiting to prevent abuse of your API.
+- Input Validation: Use express-validator for thorough input validation.
+- Deployment Scripts: Create scripts for deploying your application on platforms like AWS, Heroku, or a custom server.
 
 ## Time and Challenges
 This project took 5 hours to complete. As we are using node latest version, I decided to move with node built in test-runner. However, I am still learning to write test suites with it, apologies for not implementing fully-fledged unit tests.
