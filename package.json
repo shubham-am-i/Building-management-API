@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This project implements a building management web service using JavaScript and Express.js. It offers endpoints to manage buildings, including CRUD. Data is stored in a MongoDB database using Mongoose.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
